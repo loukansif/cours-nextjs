@@ -4,10 +4,10 @@ import Head from "next/head";
 
 export default function Article() {
   const router = useRouter();
-  console.log(router);
-  console.log(router.route);
-  console.log(router.asPath);
-  console.log(router.query);
+  // console.log(router);
+  // console.log(router.route);
+  // console.log(router.asPath);
+  // console.log(router.query);
 
   const pushFunction = () => {
     router.push("/");

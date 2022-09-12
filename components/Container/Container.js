@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../Navbar/Navbar'
 
 export default function Container(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <>
         <Navbar />

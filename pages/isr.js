@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function isr(props) {
 
-  console.log(props);
+  // console.log(props);
 
   return (
     <div>

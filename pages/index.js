@@ -1,10 +1,27 @@
 import styles from "../styles/Home.module.css";
 import Head from "next/Head";
-import { v4 as uuidv4 } from 'uuid'
+import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Home(props) {
-console.log(props);
+  const [state, setState] = useState(false);
 
+  useEffect(() => {
+    newWord()
+  },[]);
+
+  const newWord = () => {
+    fetch("/api/vocapi")
+      .then((response) => response.json())
+      .then((data) => setState(data));
+  };
+  // console.log(state);
+  let randomWord;
+  if(state){
+    const array = state.englishList[0].data;
+    randomWord = array[Math.floor(Math.random()*array.length)].en;
+  }
+  // console.log(randomWord);
   return (
     <>
       <Head>
@@ -13,8 +30,9 @@ console.log(props);
         <title>Cours NextJS</title>
       </Head>
       <div className={styles.container}>
-        <h1 className={styles.titre}>Vocabulaire de base</h1>
-        <table className={styles.tableau}>
+        {/* <h1 className={styles.titre}>Vocabulaire de base</h1> */}
+        <h1 className={styles.titre}>Mot au hasard</h1>
+        {/* <table className={styles.tableau}>
           <tbody>
             {props.array.map(el => (
               <tr key={uuidv4()}>
@@ -23,15 +41,19 @@ console.log(props);
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
+        <button className="btn btn-primary b-block mx-auto" onClick={newWord}>
+          Get Random Words
+        </button>
+        <h2 className="text-center">{randomWord}</h2>
       </div>
     </>
   );
 }
 
-export async function getStaticProps(){
-  const data = await import(`/data/vocabulary.json`)
-  const array = data.vocabulary
+export async function getStaticProps() {
+  const data = await import(`/data/vocabulary.json`);
+  const array = data.vocabulary;
 
   // if(array.length === 0){
   //   return{
@@ -39,17 +61,17 @@ export async function getStaticProps(){
   //   }
   // }
 
-  if(array.length === 0){
-    return{
+  if (array.length === 0) {
+    return {
       redirect: {
-        destination: '/isr'
-      }
-    }
+        destination: "/isr",
+      },
+    };
   }
 
   return {
     props: {
-      array: array
-    }
-  }
+      array: array,
+    },
+  };
 }
