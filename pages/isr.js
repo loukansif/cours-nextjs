@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function isr(props) {
+export default function Isr(props) {
 
   // console.log(props);
 

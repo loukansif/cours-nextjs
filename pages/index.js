@@ -1,7 +1,7 @@
 import styles from "../styles/Home.module.css";
 import Head from "next/Head";
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 export default function Home(props) {
   const [state, setState] = useState(false);
