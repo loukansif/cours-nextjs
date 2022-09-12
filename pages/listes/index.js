@@ -1,5 +1,5 @@
 import styles from "../../styles/Listes.module.css";
-import Head from "next/Head";
+import Head from "next/head";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
 
