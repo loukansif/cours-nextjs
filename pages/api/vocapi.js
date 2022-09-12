@@ -15,7 +15,7 @@ export default function Handler(req, res) {
       en: enWord,
       fr: frWord,
     };
-    console.log('handleeeeeeer', newWord);
+    // console.log('handleeeeeeer', newWord);
     const filePath = path.join(process.cwd(), "data", "listes.json");
     const fileData = fs.readFileSync(filePath, "utf8");
     const data = JSON.parse(fileData);
